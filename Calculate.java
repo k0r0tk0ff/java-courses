@@ -4,26 +4,17 @@ public class Calculate {
 		public static void main (String[] arg) throws Exception {
 			System.out.println("Calculate ...");
 			String aaa1 = new String("1");
-			String aaa2 = new String("99999999999999999999999999999999999999999999999999999");
+			String aaa2 = new String("1.9999");
 
-			//System.out.println(" The first argument is "+aaa1);
-			//System.out.println(" The second argument is "+aaa2);
+			//String[] StrArray = new String[]{"11", "11.2"};
+			// incapsulate to String array our arguments
+			String[] StrArray = new String[]{String.valueOf(aaa1), String.valueOf(aaa2)};
 
-			//System.out.println(" The first argument: "); 	DeterminantedArg a1 = new DeterminantedArg(aaa1);
-			//System.out.println(" The second argument: ");    DeterminantedArg a2 = new DeterminantedArg(aaa2);
+			ArgToShell a = new ArgToShell();
 
 
-			//ArgArray.add(4);
-			//ArgArray.add(4);
 
-			//DeterminantedArg(aaa1);
-			//DeterminantedArg(aaa2);
-
-			//double sum = ArgArray.get(0) + ArgArray.get(1);
-			//System.out.println(" Sum is " + sum);
-
-			Shell a = new Shell();
-			a.ArgToShell(aaa1, aaa2);
+			a.ArgToShell(StrArray);
 
 		}
 }
@@ -32,7 +23,7 @@ public class Calculate {
 //	public String getMessage(){return "Type is illegel...";}
 //}
 
-class Shell {
+class ArgToShell {
 	static String ArgToShell(String[] input) {
 		ArrayList ArgArray = new ArrayList(2);
 
@@ -69,16 +60,36 @@ class Shell {
 				}
 			}
 		}
-		finally { System.out.println("Parse the "+i+" arg is complete");
+		finally { System.out.println("Parse the "+(i+1)+" arg is complete");
 
 		}
 
 	}
-		double a1 = double(ArgArray.get(0));
-		double a2 = double(ArgArray.get(1));
+		System.out.println("\n The first arg is "+ArgArray.get(0));
+		System.out.println(" The second arg is "+ArgArray.get(1));
 
-		double sum = a1 + a2; //ArgArray.get(0) + ArgArray.get(1);
-		return "The sum is"+sum;
+		// Catch many exception, HZ how to do sum without convert to double type
+		//double a1 = (double)ArgArray.get(0);
+		//double a2 = (double)ArgArray.get(1);
+		//double sum = a1 + a2;
+
+		//But i want ===> double sum = ArgArray.get(0) + ArgArray.get(1);
+		//System.out.println("\n The sum is"+sum);
+		//return String.valueOf(sum);
+
+		return "\n The end";
 	}
 
+}
+
+class ArgRunner{
+	public ArgRunner(String arg1, String operation, String arg2) {
+		//if(operation ){}
+
+	}
+}
+
+class InteractRunner{
+	public InteractRunner() {
+	}
 }
