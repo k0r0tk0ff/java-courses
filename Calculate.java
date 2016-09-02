@@ -24,37 +24,38 @@ import java.io.*;
 public class Calculate {
 	//private static final Logger log = getLogger(Calculator.class);
 
-	public double getResult() {
-    return 0.0;
+	public void getResult(double getResult1) {
+		System.out.println("\n Result is ");
 	}
 
-	public static void add(double first, double second) {
-		double sum = first + second;
+	public static double add(double first, double second) {
+		return first + second;
 	}
 
-	public static void substract(double first, double second) {
-		double substract = first - second;
+	public static double substract(double first, double second) {
+		return first - second;
 	}
 
-	public static void multiple(double first, double second) {
-		double multiple = first * second;
+	public static double multiple(double first, double second) {
+		return first * second;
 	}
 
-	public static void div(double first, double second) {
+	public static double div(double first, double second) {
 		if(second == 0)throw new UnsupportedOperationException();
-		double div = first / second;
+		return first / second;
 	}
 
-	public static void expand(double first, double second) {
+	public static double expand(double first, double second) {
 		for(int i=0; i<second; i++){
 			first = (first * second);
 			}
+		return first;
 	}
 
 	public static void main(String[] arg) throws Exception {
-		double first;
-		String entered_operation = new String ("+");
-		double second;
+		double first = 2.0;
+		String entered_operation = "+";
+		double second = 2.0;
 		Calculate Result = new Calculate();
 
 		/**
@@ -62,40 +63,45 @@ public class Calculate {
 		 */
 
 		try {
-			first = Double.parseDouble(arg[0]);
-			entered_operation = String.valueOf(arg[1]);
+			first = Double.valueOf(arg[0]);
+			entered_operation = arg[1];
 			second = Double.valueOf(arg[2]);
-			System.out.print(" Argument 1 = "+first);
-			System.out.print(" Operation = "+entered_operation);
-			System.out.print(" Argument 2 = "+second);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			    System.out.println("This program takes 3 parameters: ");
 		//for test		System.out.println("  Default Operation is +");
 			    System.out.println("  Argument 1; Operation (+, -, *, /, ^); Argument 2; \n");
 		}
 
+		System.out.print(" Argument 1 = "+first);
+		System.out.print(" Operation = "+entered_operation);
+		System.out.print(" Argument 2 = "+second);
+
+
+
 		switch (entered_operation) {
 			case "+":
-				System.out.println("\n Result is "+Result.getResult(Calculate.add(first, second)));
+				//System.out.print("\n qqqqqqqqqqqqqq ");
+//				Result.getResult(Result.add(first, second));  //add(first, second);
+				System.out.println("\n Result is "+Result.add(first, second));  //add(first, second);
 				break;
 			case "-":
-				System.out.println("\n Result is "+Result.getResult(Calculate.substract(first, second)));
+				//System.out.println("\n Result is "+Result.getResult(Calculate.substract(first, second)));
 				break;
 			case "*":
-				System.out.println("\n Result is "+Result.getResult(Calculate.multiple(first, second)));
+				//System.out.println("\n Result is "+Result.getResult(Calculate.multiple(first, second)));
 				break;
 			case "/":
-				System.out.println("\n Result is "+Result.getResult(Calculate.div(first, second)));
+				//System.out.println("\n Result is "+Result.getResult(Calculate.div(first, second)));
 				break;
 			case "^":
-				System.out.println("\n Result is "+Result.getResult(Calculate.expand(first, second)));
+				//System.out.println("\n Result is "+Result.getResult(Calculate.expand(first, second)));
 				break;
 			default: System.out.println("\n Invalid entered operation");
 				break;
 		}
 
 
-		System.out.println("\n Result is "+Result.getResult());
+		//System.out.println("\n Result is "+Result.getResult());
 	}
 }
 
