@@ -1,95 +1,88 @@
-import java.util.ArrayList;
+import java.io.*;
 
-public class Calculate {
-		public static void main (String[] arg) throws Exception {
-			System.out.println("Calculate ...");
-			String aaa1 = new String("1");
-			String aaa2 = new String("1.9999");
+/*
+ * @(#)Calculate.java
+ *
+ * Copyright (c)
+ * Free to any use.
+ *
+ * @author		k0r0tk0ff
+ * @date		03/09/2016
+ * @version		1.0
+ *
+ * Create class Calculate. Add "+","-","*","/","^" operation.
+ * Must be adaptive to type int, short, long, float, double.
+ * Check second arg for division on zero. If second arg == 0 spawn java.lang.IllegalStateException
+ *
+ */
 
-			//String[] StrArray = new String[]{"11", "11.2"};
-			// incapsulate to String array our arguments
-			String[] StrArray = new String[]{String.valueOf(aaa1), String.valueOf(aaa2)};
 
-			ArgToShell a = new ArgToShell();
+public class Calculator {
+	private static final Logger log = getLogger(Calculator.class);
 
-
-
-			a.ArgToShell(StrArray);
-
-		}
-}
-
-//public class NumberFormatError extends Exception {
-//	public String getMessage(){return "Type is illegel...";}
-//}
-
-class ArgToShell {
-	static String ArgToShell(String[] input) {
-		ArrayList ArgArray = new ArrayList(2);
-
-		for(int i=0; i<2; i++) {
-		try {
-			final short var = Short.parseShort(input[i]);
-			System.out.println(" Type of the argument is short");
-			ArgArray.add(var);
-
-		} catch (NumberFormatException error1) {
-			try {
-				final int var = Integer.parseInt(input[i]);
-				System.out.println(" Type of the argument is int ");
-				ArgArray.add(var);
-			} catch (NumberFormatException error2) {
-				try {
-					final float var = Float.parseFloat(input[i]);
-					System.out.println(" Type of the argument is float");
-					ArgArray.add(var);
-				} catch (NumberFormatException error3) {
-					try {
-						final double var = Double.parseDouble(input[i]);
-						System.out.println(" Type of the argument is double");
-						ArgArray.add(var);
-					} catch (NumberFormatException error4) {
-						try {
-							final long var = Long.parseLong(input[i]);
-							System.out.println(" Type of the argument is long.");
-							ArgArray.add(var);
-						} catch (NumberFormatException error5) {
-							System.out.println(" Type of the argument is not long.");
-						}
-					}
-				}
-			}
-		}
-		finally { System.out.println("Parse the "+(i+1)+" arg is complete");
-
-		}
-
+	public double getResult() {
+		throw new UnsupportedOperationException();
 	}
-		System.out.println("\n The first arg is "+ArgArray.get(0));
-		System.out.println(" The second arg is "+ArgArray.get(1));
 
-		// Catch many exception, HZ how to do sum without convert to double type
-		//double a1 = (double)ArgArray.get(0);
-		//double a2 = (double)ArgArray.get(1);
-		//double sum = a1 + a2;
+	public void add(double first, double second) {
+		throw new UnsupportedOperationException();
+	}
 
-		//But i want ===> double sum = ArgArray.get(0) + ArgArray.get(1);
-		//System.out.println("\n The sum is"+sum);
-		//return String.valueOf(sum);
+	public void substract(double first, double second) {
+		throw new UnsupportedOperationException();
+	}
 
-		return "\n The end";
+	public void multiple(double first, double second) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void div(double first, double second) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void expand(double first, double second) {
+		throw new UnsupportedOperationException();
 	}
 
 }
+
+	public static void main(String[] args) throws Exception {
+		final static String[] OPERATIONS = new String{
+			+, -, *, /, ^
+		};
+
+
+
+
+	}
+
+/**
+ *
+ * Class for work with arguments whose get from cli with run
+ *
+ */
 
 class ArgRunner{
 	public ArgRunner(String arg1, String operation, String arg2) {
-		//if(operation ){}
+
 
 	}
 }
 
+/**
+ *
+ * 	Class for work with interactive added arguments after run
+ *
+ */
+
 class InteractRunner{
 	public InteractRunner() {
+		InputStream inputStream = System.in;
+		Reader inputStreamReader = new InputStreamReader(inputStream);
+		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+		String arg1 = bufferedReader.readLine();
+		String operation = bufferedReader.readLine();
+		String arg2 = bufferedReader.readLine();
 	}
 }
