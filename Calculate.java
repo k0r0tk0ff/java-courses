@@ -1,3 +1,6 @@
+import com.sun.org.apache.regexp.internal.RE;
+import com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl;
+
 import java.io.*;
 
 /*
@@ -22,43 +25,77 @@ public class Calculate {
 	//private static final Logger log = getLogger(Calculator.class);
 
 	public double getResult() {
-		throw new UnsupportedOperationException();
+    return 0.0;
 	}
 
-	public void add(double first, double second) {
-		throw new UnsupportedOperationException();
+	public static void add(double first, double second) {
 		double sum = first + second;
 	}
 
-	public void substract(double first, double second) {
-		throw new UnsupportedOperationException();
+	public static void substract(double first, double second) {
 		double substract = first - second;
 	}
 
-	public void multiple(double first, double second) {
-		throw new UnsupportedOperationException();
+	public static void multiple(double first, double second) {
 		double multiple = first * second;
 	}
 
-	public void div(double first, double second) {
-		throw new UnsupportedOperationException();
+	public static void div(double first, double second) {
+		if(second == 0)throw new UnsupportedOperationException();
 		double div = first / second;
 	}
 
-	public void expand(double first, double second) {
-		throw new UnsupportedOperationException();
-		double expand = first;
-			for(int i=0; i<second; i++){
-				expand = (expand * second);
+	public static void expand(double first, double second) {
+		for(int i=0; i<second; i++){
+			first = (first * second);
 			}
 	}
 
-	public static void main(String[] args) throws Exception {
-		final String[] OPERATIONS = new String[5];
-		String[] OPERATION =
-		{
-			"+", "-", "*", "/", "^"
-		};
+	public static void main(String[] arg) throws Exception {
+		double first;
+		String entered_operation = new String ("+");
+		double second;
+		Calculate Result = new Calculate();
+
+		/**
+		 * Parse the arguments
+		 */
+
+		try {
+			first = Double.parseDouble(arg[0]);
+			entered_operation = String.valueOf(arg[1]);
+			second = Double.valueOf(arg[2]);
+			System.out.print(" Argument 1 = "+first);
+			System.out.print(" Operation = "+entered_operation);
+			System.out.print(" Argument 2 = "+second);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			    System.out.println("This program takes 3 parameters: ");
+		//for test		System.out.println("  Default Operation is +");
+			    System.out.println("  Argument 1; Operation (+, -, *, /, ^); Argument 2; \n");
+		}
+
+		switch (entered_operation) {
+			case "+":
+				System.out.println("\n Result is "+Result.getResult(Calculate.add(first, second)));
+				break;
+			case "-":
+				System.out.println("\n Result is "+Result.getResult(Calculate.substract(first, second)));
+				break;
+			case "*":
+				System.out.println("\n Result is "+Result.getResult(Calculate.multiple(first, second)));
+				break;
+			case "/":
+				System.out.println("\n Result is "+Result.getResult(Calculate.div(first, second)));
+				break;
+			case "^":
+				System.out.println("\n Result is "+Result.getResult(Calculate.expand(first, second)));
+				break;
+			default: System.out.println("\n Invalid entered operation");
+				break;
+		}
+
+
+		System.out.println("\n Result is "+Result.getResult());
 	}
 }
 
