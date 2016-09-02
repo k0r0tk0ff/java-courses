@@ -6,7 +6,8 @@ import java.io.*;
  * Copyright (c)
  * Free to any use.
  *
- * @author		k0r0tk0ff
+ * @author		peterarsentev
+ * @tester      k0r0tk0ff
  * @date		03/09/2016
  * @version		1.0
  *
@@ -17,8 +18,8 @@ import java.io.*;
  */
 
 
-public class Calculator {
-	private static final Logger log = getLogger(Calculator.class);
+public class Calculate {
+	//private static final Logger log = getLogger(Calculator.class);
 
 	public double getResult() {
 		throw new UnsupportedOperationException();
@@ -26,35 +27,42 @@ public class Calculator {
 
 	public void add(double first, double second) {
 		throw new UnsupportedOperationException();
+		double sum = first + second;
 	}
 
 	public void substract(double first, double second) {
 		throw new UnsupportedOperationException();
+		double substract = first - second;
 	}
 
 	public void multiple(double first, double second) {
 		throw new UnsupportedOperationException();
+		double multiple = first * second;
 	}
 
 	public void div(double first, double second) {
 		throw new UnsupportedOperationException();
+		double div = first / second;
 	}
 
 	public void expand(double first, double second) {
 		throw new UnsupportedOperationException();
+		double expand = first;
+			for(int i=0; i<second; i++){
+				expand = (expand * second);
+			}
 	}
-
-}
 
 	public static void main(String[] args) throws Exception {
-		final static String[] OPERATIONS = new String{
-			+, -, *, /, ^
+		final String[] OPERATIONS = new String[5];
+		String[] OPERATION =
+		{
+			"+", "-", "*", "/", "^"
 		};
-
-
-
-
 	}
+}
+
+
 
 /**
  *
@@ -75,14 +83,16 @@ class ArgRunner{
  *
  */
 
-class InteractRunner{
-	public InteractRunner() {
-		InputStream inputStream = System.in;
-		Reader inputStreamReader = new InputStreamReader(inputStream);
-		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+/*
+*
+//class InteractRunner throws Exception{
+//		InputStream inputStream = System.in;
+//		Reader inputStreamReader = new InputStreamReader(inputStream);
+//		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-		String arg1 = bufferedReader.readLine();
-		String operation = bufferedReader.readLine();
-		String arg2 = bufferedReader.readLine();
-	}
-}
+//		String arg1 = bufferedReader.readLine();
+//		String operation = bufferedReader.readLine();
+//		String arg2 = bufferedReader.readLine();
+//}
+*
+*/
