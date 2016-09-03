@@ -1,5 +1,5 @@
 import java.io.*;
-//import java.util.Scanner;
+import java.util.Scanner;
 
 
 /*
@@ -66,22 +66,32 @@ public class Calculate{
 
 	public static void main(String[] arg) throws Exception {
 		double first = 8.0;
-		String entered_operation = new String("^");
+		String entered_operation = new String("x");
 		double second = 2.0;
 		Calculate Result = new Calculate();
-
+		Scanner reader = new Scanner(System.in);
 		/**
 		 * Parse the arguments
 		 */
 
-		try {
-			first = Double.parseDouble(arg[0]);
-			entered_operation = String.valueOf(arg[1]);
-			second = Double.parseDouble(arg[2]);
-		} catch (ArrayIndexOutOfBoundsException e2) {
-			    System.out.println("This program takes 3 parameters: ");
-			    System.out.println("  Argument 1; Operation (+, -, *, /, ^); Argument 2; \n");
-		}
+		//try {
+		//	first = Double.parseDouble(arg[0]);
+		//	entered_operation = String.valueOf(arg[1]);
+		//	second = Double.parseDouble(arg[2]);
+		//} catch (ArrayIndexOutOfBoundsException e2) {
+		//	    System.out.println("This program takes 3 parameters: ");
+		//	    System.out.println("  Argument 1; Operation (+, -, *, /, ^); Argument 2; \n");
+		//}
+
+		//work with interact enter
+		//first = Double.parseDouble(reader.next());
+		//entered_operation = reader.next();
+		//second = Double.parseDouble(reader.next());
+
+		first = Double.valueOf(arg[0]);
+		entered_operation = String.valueOf(arg[1]);
+		second = Double.valueOf(arg[2]);
+
 
 		System.out.println(" Argument 1 = "+first);
 		System.out.println(" Operation  = "+entered_operation);
@@ -98,7 +108,7 @@ public class Calculate{
 			case "-":
 				Result.getResult(Result.substract(first, second));
 				break;
-			case "*":
+			case "x":
 				Result.getResult(Result.multiple(first, second));
 				break;
 			case "^":
