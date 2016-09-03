@@ -41,12 +41,19 @@ public class Calculate{
 	}
 
 	public static double div(double first, double second) {
-		if(second == 0)throw new UnsupportedOperationException(); System.out.println(" div on 0 !!!");
-		return first / second;
+		double div_value = 0.0;
+		try{
+			div_value = first / second;
+		}
+		catch (UnsupportedOperationException e1) {
+		System.out.println(" div on 0 !!!");
+		}
+
+		return div_value;
 	}
 
 	public static double expand(double first, double second) {
-		double expand_value = 1.0;
+		double expand_value = 0.0;
 		if(second == 0) expand_value = 1.0;
 			else if(second == 1) expand_value = first;
 				else {
@@ -71,7 +78,7 @@ public class Calculate{
 			first = Double.valueOf(arg[0]);
 			entered_operation = arg[1];
 			second = Double.valueOf(arg[2]);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (ArrayIndexOutOfBoundsException e2) {
 			    System.out.println("This program takes 3 parameters: ");
 			    System.out.println("  Argument 1; Operation (+, -, *, /, ^); Argument 2; \n");
 		}
@@ -90,18 +97,17 @@ public class Calculate{
 			case "*":
 				Result.getResult(Result.multiple(first, second));
 				break;
-			case "/":
-				Result.getResult(Result.div(first, second));
-				break;
 			case "^":
 				Result.getResult(Result.expand(first, second));
+				break;
+			case "/":
+				Result.getResult(Result.div(first, second));
 				break;
 			default: System.out.println("\n Invalid entered operation");
 				break;
 		}
 	}
 }
-
 
 
 /**
@@ -112,8 +118,6 @@ public class Calculate{
 
 class ArgRunner{
 	public ArgRunner(String arg1, String operation, String arg2) {
-
-
 	}
 }
 
