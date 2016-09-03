@@ -9,8 +9,8 @@ import java.io.*;
  * Copyright (c)
  * Free to any use.
  *
- * @author		peterarsentev
- * @tester      k0r0tk0ff
+ * @author_for_template		peterarsentev
+ * @author_tester      k0r0tk0ff
  * @date		03/09/2016
  * @version		1.0
  *
@@ -21,11 +21,11 @@ import java.io.*;
  */
 
 
-public class Calculate {
+public class Calculate{
 	//private static final Logger log = getLogger(Calculator.class);
 
 	public void getResult(double getResult1) {
-		System.out.println("\n Result is ");
+		System.out.println("\n Result is "+getResult1);
 	}
 
 	public static double add(double first, double second) {
@@ -41,21 +41,26 @@ public class Calculate {
 	}
 
 	public static double div(double first, double second) {
-		if(second == 0)throw new UnsupportedOperationException();
+		if(second == 0)throw new UnsupportedOperationException(); System.out.println(" div on 0 !!!");
 		return first / second;
 	}
 
 	public static double expand(double first, double second) {
-		for(int i=0; i<second; i++){
-			first = (first * second);
-			}
-		return first;
+		double expand_value = 1.0;
+		if(second == 0) expand_value = 1.0;
+			else if(second == 1) expand_value = first;
+				else {
+					for (int i = 0; i < second; i++) {
+						expand_value = expand_value * first;
+						}
+				}
+		return expand_value;
 	}
 
 	public static void main(String[] arg) throws Exception {
-		double first = 2.0;
-		String entered_operation = "+";
-		double second = 2.0;
+		double first = 8.0;
+		String entered_operation = "/";
+		double second = 0.0;
 		Calculate Result = new Calculate();
 
 		/**
@@ -68,40 +73,32 @@ public class Calculate {
 			second = Double.valueOf(arg[2]);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			    System.out.println("This program takes 3 parameters: ");
-		//for test		System.out.println("  Default Operation is +");
 			    System.out.println("  Argument 1; Operation (+, -, *, /, ^); Argument 2; \n");
 		}
 
-		System.out.print(" Argument 1 = "+first);
-		System.out.print(" Operation = "+entered_operation);
-		System.out.print(" Argument 2 = "+second);
-
-
+		System.out.println(" Argument 1 = "+first);
+		System.out.println(" Operation  = "+entered_operation);
+		System.out.println(" Argument 2 = "+second);
 
 		switch (entered_operation) {
 			case "+":
-				//System.out.print("\n qqqqqqqqqqqqqq ");
-//				Result.getResult(Result.add(first, second));  //add(first, second);
-				System.out.println("\n Result is "+Result.add(first, second));  //add(first, second);
+				Result.getResult(Result.add(first, second));
 				break;
 			case "-":
-				//System.out.println("\n Result is "+Result.getResult(Calculate.substract(first, second)));
+				Result.getResult(Result.substract(first, second));
 				break;
 			case "*":
-				//System.out.println("\n Result is "+Result.getResult(Calculate.multiple(first, second)));
+				Result.getResult(Result.multiple(first, second));
 				break;
 			case "/":
-				//System.out.println("\n Result is "+Result.getResult(Calculate.div(first, second)));
+				Result.getResult(Result.div(first, second));
 				break;
 			case "^":
-				//System.out.println("\n Result is "+Result.getResult(Calculate.expand(first, second)));
+				Result.getResult(Result.expand(first, second));
 				break;
 			default: System.out.println("\n Invalid entered operation");
 				break;
 		}
-
-
-		//System.out.println("\n Result is "+Result.getResult());
 	}
 }
 
