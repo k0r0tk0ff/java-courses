@@ -1,7 +1,6 @@
-import com.sun.org.apache.regexp.internal.RE;
-import com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl;
-
 import java.io.*;
+//import java.util.Scanner;
+
 
 /*
  * @(#)Calculate.java
@@ -41,19 +40,20 @@ public class Calculate{
 	}
 
 	public static double div(double first, double second) {
-		double div_value = 0.0;
-		try{
-			div_value = first / second;
-		}
-		catch (UnsupportedOperationException e1) {
-		System.out.println(" div on 0 !!!");
-		}
+		//double div_value = 0.0;
+		//try{
+		//	div_value = first / second;
+		//}
+		//catch (UnsupportedOperationException e1) {
+		//System.out.println(" div on 0 !!!");
+		//}
 
-		return div_value;
+		//return div_value;
+		return first / second;
 	}
 
 	public static double expand(double first, double second) {
-		double expand_value = 0.0;
+		double expand_value = 1.0;
 		if(second == 0) expand_value = 1.0;
 			else if(second == 1) expand_value = first;
 				else {
@@ -66,8 +66,8 @@ public class Calculate{
 
 	public static void main(String[] arg) throws Exception {
 		double first = 8.0;
-		String entered_operation = "/";
-		double second = 0.0;
+		String entered_operation = new String("^");
+		double second = 2.0;
 		Calculate Result = new Calculate();
 
 		/**
@@ -75,9 +75,9 @@ public class Calculate{
 		 */
 
 		try {
-			first = Double.valueOf(arg[0]);
-			entered_operation = arg[1];
-			second = Double.valueOf(arg[2]);
+			first = Double.parseDouble(arg[0]);
+			entered_operation = String.valueOf(arg[1]);
+			second = Double.parseDouble(arg[2]);
 		} catch (ArrayIndexOutOfBoundsException e2) {
 			    System.out.println("This program takes 3 parameters: ");
 			    System.out.println("  Argument 1; Operation (+, -, *, /, ^); Argument 2; \n");
@@ -86,6 +86,10 @@ public class Calculate{
 		System.out.println(" Argument 1 = "+first);
 		System.out.println(" Operation  = "+entered_operation);
 		System.out.println(" Argument 2 = "+second);
+
+		/**
+		 * Do operation, that has been entered
+		 */
 
 		switch (entered_operation) {
 			case "+":
@@ -102,6 +106,7 @@ public class Calculate{
 				break;
 			case "/":
 				Result.getResult(Result.div(first, second));
+				//Result.div(first, second);
 				break;
 			default: System.out.println("\n Invalid entered operation");
 				break;
