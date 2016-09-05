@@ -40,17 +40,17 @@ public class Calculate{
 	    }
 
 		public static double div(double first, double second) throws IllegalStateException{
-			double div_value = 0.0;
-			try{
-				div_value = first / second;
-				if (div_value == Double.POSITIVE_INFINITY ||
-						div_value == Double.NEGATIVE_INFINITY)
-					throw new IllegalStateException();
-			}
-			catch (IllegalStateException e) {
-			System.out.println(" div on 0 !!!");
-			}
-        return div_value;
+			//public double div_value = 0.0;
+			//try{
+			//	div_value = first / second;
+			//	if (div_value == Double.POSITIVE_INFINITY ||
+			//			div_value == Double.NEGATIVE_INFINITY)
+			//		throw new IllegalStateException();
+			//}
+			//catch (IllegalStateException e) {
+			//System.out.println(" div on 0 !!!");
+			//}
+        return first / second;
 		}
 
 		public static double expand(double first, double second) {
@@ -119,8 +119,14 @@ public class Calculate{
 				Result.getResult(Result.expand(first, second));
 				break;
 			case "/":
-				Result.getResult(Result.div(first, second));
-				//Result.div(first, second);
+				try{
+					Result.div(first, second);
+					if (Result.div(first, second) == Double.POSITIVE_INFINITY ||
+							Result.div(first, second) == Double.NEGATIVE_INFINITY)
+						throw new IllegalStateException();
+				} catch (IllegalStateException e) {
+					System.out.println(" div on 0 !!!");
+				}
 				break;
 			default: System.out.println("\n Invalid entered operation");
 				break;
