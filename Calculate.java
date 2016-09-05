@@ -65,33 +65,36 @@ public class Calculate{
 	}
 
 	public static void main(String[] arg) throws Exception {
-		double first = 8.0;
+		double first = 0.0;
 		String entered_operation = new String("x");
-		double second = 2.0;
+		double second = 0.0;
 		Calculate Result = new Calculate();
 		Scanner reader = new Scanner(System.in);
+
 		/**
-		 * Parse the arguments
+		 * Try parse the enterred arguments in CLI
+		 */
+			try {
+				first = Double.parseDouble(arg[0]);
+				entered_operation = String.valueOf(arg[1]);
+				second = Double.parseDouble(arg[2]);
+
+		/**
+		 * Interactive entering the arguments
 		 */
 
-		//try {
-		//	first = Double.parseDouble(arg[0]);
-		//	entered_operation = String.valueOf(arg[1]);
-		//	second = Double.parseDouble(arg[2]);
-		//} catch (ArrayIndexOutOfBoundsException e2) {
-		//	    System.out.println("This program takes 3 parameters: ");
-		//	    System.out.println("  Argument 1; Operation (+, -, *, /, ^); Argument 2; \n");
-		//}
+			} catch (ArrayIndexOutOfBoundsException e2) {
+				System.out.println("  This program takes 3 parameters (for CLI and Interact enter): ");
+				System.out.println("  Enter the arguments and operation manully: \n");
+				System.out.println("  Argument 1; Operation (+, -, x, /, ^); Argument 2; \n");
+				first = Double.parseDouble(reader.next());
+				entered_operation = reader.next();
+				second = Double.parseDouble(reader.next());
+			}
 
-		//work with interact enter
-		//first = Double.parseDouble(reader.next());
-		//entered_operation = reader.next();
-		//second = Double.parseDouble(reader.next());
-
-		first = Double.valueOf(arg[0]);
-		entered_operation = String.valueOf(arg[1]);
-		second = Double.valueOf(arg[2]);
-
+		/**
+		 * Checking the entered arguments
+		 */
 
 		System.out.println(" Argument 1 = "+first);
 		System.out.println(" Operation  = "+entered_operation);
@@ -124,34 +127,3 @@ public class Calculate{
 	}
 }
 
-
-/**
- *
- * Class for work with arguments whose get from cli with run
- *
- */
-
-class ArgRunner{
-	public ArgRunner(String arg1, String operation, String arg2) {
-	}
-}
-
-/**
- *
- * 	Class for work with interactive added arguments after run
- *
- */
-
-/*
-*
-//class InteractRunner throws Exception{
-//		InputStream inputStream = System.in;
-//		Reader inputStreamReader = new InputStreamReader(inputStream);
-//		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-//		String arg1 = bufferedReader.readLine();
-//		String operation = bufferedReader.readLine();
-//		String arg2 = bufferedReader.readLine();
-//}
-*
-*/
