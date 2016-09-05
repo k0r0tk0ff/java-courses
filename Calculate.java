@@ -10,8 +10,8 @@ import java.util.Scanner;
  *
  * @author_for_template		peterarsentev
  * @author_tester      k0r0tk0ff
- * @date		03/09/2016
- * @version		1.0
+ * @date		05/09/2016
+ * @version		2.0
  *
  * Create class Calculate. Add "+","-","*","/","^" operation.
  * Must be adaptive to type int, short, long, float, double.
@@ -27,42 +27,43 @@ public class Calculate{
 		System.out.println("\n Result is "+getResult1);
 	}
 
-	public static double add(double first, double second) {
-		return first + second;
-	}
+		public static double add(double first, double second){
+			return first + second;
+		}
 
-	public static double substract(double first, double second) {
-		return first - second;
-	}
+		public static double substract(double first, double second){
+			return first - second;
+	    }
 
-	public static double multiple(double first, double second) {
+		public static double multiple(double first, double second){
 		return first * second;
-	}
+	    }
 
-	public static double div(double first, double second) {
-		//double div_value = 0.0;
-		//try{
-		//	div_value = first / second;
-		//}
-		//catch (UnsupportedOperationException e1) {
-		//System.out.println(" div on 0 !!!");
-		//}
+		public static double div(double first, double second) throws IllegalStateException{
+			double div_value = 0.0;
+			try{
+				div_value = first / second;
+				if (div_value == Double.POSITIVE_INFINITY ||
+						div_value == Double.NEGATIVE_INFINITY)
+					throw new IllegalStateException();
+			}
+			catch (IllegalStateException e) {
+			System.out.println(" div on 0 !!!");
+			}
+        return div_value;
+		}
 
-		//return div_value;
-		return first / second;
-	}
-
-	public static double expand(double first, double second) {
-		double expand_value = 1.0;
-		if(second == 0) expand_value = 1.0;
-			else if(second == 1) expand_value = first;
-				else {
-					for (int i = 0; i < second; i++) {
-						expand_value = expand_value * first;
-						}
-				}
+		public static double expand(double first, double second) {
+			double expand_value = 1.0;
+			if(second == 0) expand_value = 1.0;
+				else if(second == 1) expand_value = first;
+					else {
+						for (int i = 0; i < second; i++) {
+							expand_value = expand_value * first;
+							}
+					}
 		return expand_value;
-	}
+		}
 
 	public static void main(String[] arg) throws Exception {
 		double first = 0.0;
@@ -74,23 +75,23 @@ public class Calculate{
 		/**
 		 * Try parse the enterred arguments in CLI
 		 */
-			try {
-				first = Double.parseDouble(arg[0]);
-				entered_operation = String.valueOf(arg[1]);
-				second = Double.parseDouble(arg[2]);
+		try {
+			first = Double.parseDouble(arg[0]);
+			entered_operation = String.valueOf(arg[1]);
+			second = Double.parseDouble(arg[2]);
 
 		/**
 		 * Interactive entering the arguments
 		 */
 
-			} catch (ArrayIndexOutOfBoundsException e2) {
+		} catch (ArrayIndexOutOfBoundsException e2) {
 				System.out.println("  This program takes 3 parameters (for CLI and Interact enter): ");
 				System.out.println("  Enter the arguments and operation manully: \n");
 				System.out.println("  Argument 1; Operation (+, -, x, /, ^); Argument 2; \n");
 				first = Double.parseDouble(reader.next());
 				entered_operation = reader.next();
 				second = Double.parseDouble(reader.next());
-			}
+		}
 
 		/**
 		 * Checking the entered arguments
