@@ -11,7 +11,7 @@ import java.io.*;
  * @author_for_template		peterarsentev
  * @author_tester           k0r0tk0ff
  * @date		05/09/2016
- * @version		3.0
+ * @version		3.01
  *
  * Create class Calculate. Add "+","-","*","/","^" operation.
  * Must be adaptive to type int, short, long, float, double.
@@ -40,16 +40,6 @@ public class Calculate{
 	}
 
 	public static double div(double first, double second) throws IllegalStateException{
-		//public double div_value = 0.0;
-		//try{
-		//	div_value = first / second;
-		//	if (div_value == Double.POSITIVE_INFINITY ||
-		//			div_value == Double.NEGATIVE_INFINITY)
-		//		throw new IllegalStateException();
-		//}
-		//catch (IllegalStateException e) {
-		//System.out.println(" div on 0 !!!");
-		//}
 		return first / second;
 	}
 
@@ -80,9 +70,9 @@ public class Calculate{
 			entered_operation = String.valueOf(arg[1]);
 			second = Double.parseDouble(arg[2]);
 
-			/**
-			 * Interactive entering the arguments
-			 */
+		/**
+		 * Interactive entering the arguments
+		 */
 
 		} catch (ArrayIndexOutOfBoundsException e2) {
 			System.out.println("  This program takes 3 parameters (for CLI and Interact enter): ");
@@ -102,9 +92,9 @@ public class Calculate{
 		System.out.println(" Argument 2 = "+second);
 
 		/**
-		 * Do operation, that has been entered
-		 * Code is commented? becouse the Maven do not compile whith
-		 * operand Switch-Case
+		 * Do arithmetic operation,
+		 * Code is commented, becouse the Maven do not compile
+		 * whith operand Switch-Case
 
 		 switch (entered_operation) {
 		 case "+":
@@ -136,7 +126,7 @@ public class Calculate{
 		 */
 
 		/**
-		 * Do operation, that has been entered whith If-Else construction
+		 * Do arithmetic operation, that has been entered whith If-Else construction
 		 */
 
 		if(entered_operation.equals("+")){
@@ -152,7 +142,7 @@ public class Calculate{
 				Result.div(first, second);
 				if (Result.div(first, second) == Double.POSITIVE_INFINITY ||
 						Result.div(first, second) == Double.NEGATIVE_INFINITY)
-					throw new IllegalStateException();
+							throw new IllegalStateException();
 			} catch (IllegalStateException e) {
 				System.out.println(" div on 0 !!!");
 			}
