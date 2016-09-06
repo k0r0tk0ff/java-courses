@@ -1,5 +1,6 @@
-import java.io.*;
-		import java.util.Scanner;
+package ru.lesson.lessons;
+
+import java.util.Scanner;
 
 
 /*
@@ -22,10 +23,7 @@ import java.io.*;
 
 public class Calculate{
 	//private static final Logger log = getLogger(Calculator.class);
-
-	public void getResult(double getResult1) {
-		System.out.println("\n Result is "+getResult1);
-	}
+	public void getResult(double getResult1) {System.out.println("\n Result is "+getResult1); }
 
 	public static double add(double first, double second){
 		return first + second;
