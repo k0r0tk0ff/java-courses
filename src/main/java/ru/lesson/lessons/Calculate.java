@@ -138,6 +138,7 @@ public class Calculate{
 		}else if(entered_operation.equals("/")){
 			try{
 				Result.div(first, second);
+				Result.getResult(Result.div(first, second));
 				if (Result.div(first, second) == Double.POSITIVE_INFINITY ||
 						Result.div(first, second) == Double.NEGATIVE_INFINITY)
 							throw new IllegalStateException();
