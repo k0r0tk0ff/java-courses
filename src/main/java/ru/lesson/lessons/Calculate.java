@@ -11,8 +11,8 @@ import java.util.Scanner;
  *
  * @author_for_template		peterarsentev
  * @author_tester           k0r0tk0ff
- * @date		05/09/2016
- * @version		3.01
+ * @date		07/09/2016
+ * @version		3.2
  *
  * Create class Calculate. Add "+","-","*","/","^" operation.
  * Must be adaptive to type int, short, long, float, double.

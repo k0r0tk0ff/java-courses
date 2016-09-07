@@ -6,9 +6,25 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by k0r0tk0ff on 9/6/16.
+/*
+ * @(#)CalculateTest.java
+ *
+ * Copyright (c)
+ * Free to any use.
+ *
+ * @author_for_template		peterarsentev
+ * @author_tester           k0r0tk0ff
+ * @date		07/09/2016
+ * @version		3.2
+ *
+ * Test methods of class Calculate
+ * (Use test methods aka "black box")
+ *
+ * testadd test Calculator.add
+ * testdiv test Calculator.div
+ * and similary
  */
+
 public class CalculateTest {
     @Test
     public void testadd() throws Exception {
