@@ -38,13 +38,7 @@ public class CalculateTest {
          * public Calculator(double first, String entered_operation, double second)
          */
 
-        Calculator calculator = new Calculator(5, "-", 2);
-        //assertEquals(3.0, calculator.substract(calculator.first,calculator.second), 0.0);
-
-        //need to use assertThat from developer`s test packet hamcrest-all
-        //http://www.vogella.com/tutorials/Hamcrest/article.html
-        //https://en.wikipedia.org/wiki/Hamcrest
-        //http://hamcrest.org/JavaHamcrest/
+        Calculator calculator = new Calculator(5,"+",2);
         assertThat(3.0, equalTo(calculator.substract(calculator.first,calculator.second)));
     }
 

@@ -18,7 +18,6 @@ package ru.lesson.lessons;
  */
 
 public class Calculate{
-	//private static final Logger log = getLogger(Calculator.class);
 
 	public static void main(String[] arg) throws Exception {
 		/**
@@ -28,24 +27,25 @@ public class Calculate{
 		String entered_operation = "+";
 		double second = 1.0;
 
-		//try {
-		   if(arg.length > 0) {
+		try {
+			if (arg.length > 0) {
 				ArgRunner arg_runner = new ArgRunner(arg);
 				first = arg_runner.first;
 				entered_operation = arg_runner.entered_operation;
 				second = arg_runner.second;
 			}
-           else{
+		} 	catch (ArrayIndexOutOfBoundsException e2) {
+				InteractRunner interact_runner = new InteractRunner();
+				first = interact_runner.first;
+				entered_operation = interact_runner.entered_operation;
+				second = interact_runner.second;
+			}
+
+        //else{
 		/**
 		 * Interactive entering the arguments
 		 */
-		    //} catch (ArrayIndexOutOfBoundsException e2) {
-			InteractRunner interact_runner = new InteractRunner();
-			first = interact_runner.first;
-			entered_operation = interact_runner.entered_operation;
-			second = interact_runner.second;
-
-		}
+		//    }
 
 		Calculator calculator = new Calculator(first, entered_operation, second);
 	}
