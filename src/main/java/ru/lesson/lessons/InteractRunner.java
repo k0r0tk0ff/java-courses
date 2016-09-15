@@ -62,6 +62,7 @@ public class InteractRunner {
 
 				System.out.println("\n Entered value is " + try_again);
 
+			/**
 				do {
 					System.out.println("\n Please, enter \"y\" or \"n\" \n");
 					Scanner reader3 = new Scanner(System.in);
