@@ -17,6 +17,8 @@ package ru.lesson.lessons;
  *
  */
 
+import java.util.Scanner;
+
 public class Calculate{
 
 	public static void main(String[] arg) throws Exception {
@@ -26,28 +28,53 @@ public class Calculate{
 		double first = 1.0;
 		String entered_operation = "+";
 		double second = 1.0;
+		String try_again = "y";
+		String try_again_with_result = "y";
 
-		try {
-			if (arg.length > 0) {
-				ArgRunner arg_runner = new ArgRunner(arg);
-				first = arg_runner.first;
-				entered_operation = arg_runner.entered_operation;
-				second = arg_runner.second;
-			}
-		} 	catch (ArrayIndexOutOfBoundsException e2) {
+		while(try_again.equals("y")){
+			try {
+
+				/**
+				 * Check arg from CLI
+				 */
+
+				if (arg.length > 0) {
+					ArgRunner arg_runner = new ArgRunner(arg);
+					first = arg_runner.first;
+					entered_operation = arg_runner.entered_operation;
+					second = arg_runner.second;
+				}
+			} catch (ArrayIndexOutOfBoundsException e2) {
+
+				/**
+				 * Try interact enter, if CLI input is wrong
+				 */
+
 				InteractRunner interact_runner = new InteractRunner();
 				first = interact_runner.first;
 				entered_operation = interact_runner.entered_operation;
 				second = interact_runner.second;
 			}
 
-        //else{
-		/**
-		 * Interactive entering the arguments
-		 */
-		//    }
+				Calculator calculator = new Calculator(first, entered_operation, second);
 
-		Calculator calculator = new Calculator(first, entered_operation, second);
+			/**
+		 	* Ask user "TRY AGAIN?"
+		 	*/
+
+			System.out.println("\n Try again? (y/n) \n");
+			Scanner reader2 = new Scanner(System.in);
+			try_again = reader2.next();
+
+			/**
+			 * Ask user "Save the result in argument[1] ?"
+			 */
+
+			//System.out.println("\n Save the result in argument[1] (y/n) \n");
+			//Scanner reader3 = new Scanner(System.in);
+			//try_again_with_result = reader3.next();
+		}
+		//System.out.println("\n Entered value is " + try_again);
 	}
 }
 
