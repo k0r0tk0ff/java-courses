@@ -8,8 +8,8 @@ package ru.lesson.lessons;
  *
  * @author_for_template		peterarsentev
  * @author_tester           k0r0tk0ff
- * @date		12/09/2016
- * @version		2.2
+ * @date		16/09/2016
+ * @version		3.0
  *
  * Create class ArgRunner. Add the first argument, entered operation, second argument.
  * 
@@ -39,12 +39,7 @@ public class ArgRunner {
 		 *  go to interact input
 		 */
 
-			System.out.println ("\n  Error enter from CLI, try enter interact: \n");
-		//	InteractRunner interact_runner = new InteractRunner();
-		//	first = interact_runner.first;
-		//	entered_operation = interact_runner.entered_operation;
-		//	second = interact_runner.second;
-			//System.exit(0);
+			System.out.println ("\n  Enter interact: \n");
 		}
 	}
 

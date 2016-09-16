@@ -1,6 +1,6 @@
 package ru.lesson.lessons;
 
-/*
+/**
  * @(#)Calculator.java
  *
  * Copyright (c)
@@ -8,22 +8,23 @@ package ru.lesson.lessons;
  *
  * @author_for_template		peterarsentev
  * @author_tester           k0r0tk0ff
- * @date		12/09/2016
- * @version		2.2
+ * @date		16/09/2016
+ * @version		3.0
  *
  * Create class Calculator. Calculate first argument, entered operation, second argument.
  *
  * Use SOLID princips.
  */
 
-public class Calculator {
+public class Calculator{
     double first;
     String entered_operation;
     double second;
     double Result;
 
-
-
+    /**
+     * Write methods for arithmetic operation
+     */
 
     public double add(double first, double second){
         return first + second;
@@ -41,29 +42,33 @@ public class Calculator {
         return first / second;
     }
 
-    public double expand(double first, double second) {
+    public double expand(double first, double second){
         double expand_value = 1.0;
         if(second == 0) expand_value = 1.0;
         else if(second == 1) expand_value = first;
-        else {
-            for (int i = 0; i < second; i++) {
+        else{
+            for (int i=0; i < second; i++){
                 expand_value = expand_value * first;
             }
         }
         return expand_value;
     }
 
-    public Calculator(double first, String entered_operation, double second) {
-        this.first = first;
-        this.entered_operation = entered_operation;
-        this.second = second;
+    public Calculator(double first, String entered_operation, double second){
 
-        /**
-         * Switch to arithmetic operation
-         *
+         /**
+         * Use variables from input in method`s body
          */
 
-         switch (entered_operation) {
+         this.first = first;
+         this.entered_operation = entered_operation;
+         this.second = second;
+
+         /**
+         * Switch to arithmetic operation
+         */
+
+         switch (entered_operation){
          case "+":
              Result = add(first, second);
          break;
@@ -92,37 +97,26 @@ public class Calculator {
          }
 
         /**
-         * Checking the entered arguments
-         * (for tests)
+         * Checking on monitor the entered arguments
          */
 
         System.out.println ("\nArgument 1: "+first);
         System.out.println ("Operation: "+entered_operation);
         System.out.println ("Argument 2: "+second);
         System.out.println("\n Result is "+Result);
+    }
 
         /**
-         * Do arithmetic operation, that has been entered whith If-Else construction
-         *
-         * if(entered_operation.equals("+")){
-         *       getResult(add(first, second));
-         * }else if(entered_operation.equals("-")){
-         *       getResult(substract(first, second));
-         * }else if(entered_operation.equals("x")){
-         *       getResult(multiple(first, second));
-         * }else if(entered_operation.equals("^")){
-         *       getResult(expand(first, second));
-         * }else if(entered_operation.equals("/")){
-         *     try{
-         *       div(first, second);
-         *       getResult(div(first, second));
-         *       if (div(first, second) == Double.POSITIVE_INFINITY ||
-         *               div(first, second) == Double.NEGATIVE_INFINITY)
-         *           throw new IllegalStateException();
-         *   } catch (IllegalStateException e) {
-         *       System.out.println(" div on 0 !!!");
-         *   }
-         *   }else System.out.println("\n Invalid entered operation");
+        * Use constructor for tests
+        */
+
+    public Calculator(double first, double second){
+
+        /**
+         * Use variables from input in method`s body
          */
+
+        this.first = first;
+        this.second = second;
     }
 }
