@@ -40,10 +40,10 @@ public class ArgRunner {
 		 */
 
 			System.out.println ("\n  Error enter from CLI, try enter interact: \n");
-			InteractRunner interact_runner = new InteractRunner();
-			first = interact_runner.first;
-			entered_operation = interact_runner.entered_operation;
-			second = interact_runner.second;
+		//	InteractRunner interact_runner = new InteractRunner();
+		//	first = interact_runner.first;
+		//	entered_operation = interact_runner.entered_operation;
+		//	second = interact_runner.second;
 			//System.exit(0);
 		}
 	}
