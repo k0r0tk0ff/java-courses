@@ -33,14 +33,6 @@ public class Calculate{
 	double last_result = 0.0;
 	int try_again_with_result_exit = 0;
 
-	public void runCalculate(String[] arg) {
-
-	}
-
-	public void runCalculate() {
-
-	}
-
 	String tryAgain(){
 		int tryagain_exit = 0;
 
@@ -60,57 +52,50 @@ public class Calculate{
 		return try_again;
 	}
 
+	public void runCalculate(String[] arg){
+		while(try_again.equals("y")){
 
-	public static void main(String[] arg) throws Exception {
+			/**
+			 * Check arg from CLI
+			 */
 
-	runCalculate();
+			if (arg.length > 0) {
+				ArgRunner arg_runner = new ArgRunner(arg);
+				first = arg_runner.first;
+				entered_operation = arg_runner.entered_operation;
+				second = arg_runner.second;
+			}
 
-
-
-
-		while(calculator.try_again.equals("y")){
-
-				/**
-				 * Check arg from CLI
-				 */
-
-				if (arg.length > 0) {
-					ArgRunner arg_runner = new ArgRunner(arg);
-					first = arg_runner.first;
-					entered_operation = arg_runner.entered_operation;
-					second = arg_runner.second;
-				}
-
-				if(last_result != 0.0){
-					InteractRunner interact_runner = new InteractRunner(last_result);
-					first = last_result;
-					entered_operation = interact_runner.entered_operation;
-					second = interact_runner.second;
-				}
-				else {
-					InteractRunner interact_runner = new InteractRunner();
-					first = interact_runner.first;
-					entered_operation = interact_runner.entered_operation;
-					second = interact_runner.second;
-				}
+			if(last_result != 0.0){
+				InteractRunner interact_runner = new InteractRunner(last_result);
+				first = last_result;
+				entered_operation = interact_runner.entered_operation;
+				second = interact_runner.second;
+			}
+			else {
+				InteractRunner interact_runner = new InteractRunner();
+				first = interact_runner.first;
+				entered_operation = interact_runner.entered_operation;
+				second = interact_runner.second;
+			}
 
 			Calculator calculator = new Calculator(first, entered_operation, second);
 
 			/**
-		 	* Ask user "TRY AGAIN?"
-		 	*/
+			 * Ask user "TRY AGAIN?"
+			 */
 
-			calculator.tryAgain();
+			try_again = tryAgain();
 
 			/**
 			 * Ask user "Save the result in argument[1] ?", and check the input
 			 */
-		    do {
-		   	System.out.println("\n Save the result in argument[1] (y/n) \n");
-		   	Scanner reader3 = new Scanner(System.in);
-           	try_again_with_result = reader3.next();
+			do {
+				System.out.println("\n Save the result in argument[1] (y/n) \n");
+				Scanner reader3 = new Scanner(System.in);
+				try_again_with_result = reader3.next();
 
-			if(try_again_with_result.equals("y")){
+				if(try_again_with_result.equals("y")){
 					try_again_with_result_exit = 1;
 					last_result = calculator.Result;
 				}
@@ -121,6 +106,11 @@ public class Calculate{
 				else {System.out.println("\n Error enter of try_again_with_result !!! \n");}
 			}while (try_again_with_result_exit == 0);
 		}
+	}
+
+	public static void main(String[] arg) throws Exception {
+
+	//runCalculate(arg);
 	}
 }
 
