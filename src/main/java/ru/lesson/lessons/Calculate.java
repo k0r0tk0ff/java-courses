@@ -21,19 +21,54 @@ import java.util.Scanner;
 
 public class Calculate{
 
-	public static void main(String[] arg) throws Exception {
-		/**
-		 * Initialization NOT null variables
-		 */
-		double first = 1.0;
-		String entered_operation = "+";
-		double second = 1.0;
-		String try_again = "y";
-		String try_again_with_result = "y";
-		double last_result = 0.0;
-		int try_again_with_result_exit = 0;
+	/**
+	 * Initialization NOT null variables
+	 */
 
-		while(try_again.equals("y")){
+	double first = 1.0;
+	String entered_operation = "+";
+	double second = 1.0;
+	String try_again = "y";
+	String try_again_with_result = "y";
+	double last_result = 0.0;
+	int try_again_with_result_exit = 0;
+
+	public void runCalculate(String[] arg) {
+
+	}
+
+	public void runCalculate() {
+
+	}
+
+	String tryAgain(){
+		int tryagain_exit = 0;
+
+		do {
+			System.out.println("\n Try again? (y/n) \n");
+			Scanner reader2 = new Scanner(System.in);
+			try_again = reader2.next();
+			if (try_again.equals("n")) {
+				System.exit(0);
+			} else if(try_again.equals("y")){
+				try_again = "y";
+				tryagain_exit = 1;
+			}else {
+				System.out.println("\n Error enter \n");
+			}
+		}while (tryagain_exit != 1);
+		return try_again;
+	}
+
+
+	public static void main(String[] arg) throws Exception {
+
+	runCalculate();
+
+
+
+
+		while(calculator.try_again.equals("y")){
 
 				/**
 				 * Check arg from CLI
@@ -65,10 +100,7 @@ public class Calculate{
 		 	* Ask user "TRY AGAIN?"
 		 	*/
 
-			System.out.println("\n Try again? (y/n) \n");
-			Scanner reader2 = new Scanner(System.in);
-			try_again = reader2.next();
-			if(try_again.equals("n")){System.exit(0);}
+			calculator.tryAgain();
 
 			/**
 			 * Ask user "Save the result in argument[1] ?", and check the input
