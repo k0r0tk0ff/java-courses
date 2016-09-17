@@ -8,8 +8,8 @@ package ru.lesson.lessons;
  *
  * @author_for_template		peterarsentev
  * @author_tester           k0r0tk0ff
- * @date		16/09/2016
- * @version		5.0
+ * @date		17/09/2016
+ * @version		6.0
  *
  * Create class Calculate. Add "+","-","*","/","^" operation.
  * Must be adaptive to type int, short, long, float, double.
@@ -25,15 +25,22 @@ public class Calculate{
 	 * Initialization NOT null variables
 	 */
 
-	double first = 1.0;
-	String entered_operation = "+";
-	double second = 1.0;
-	String try_again = "y";
-	String try_again_with_result = "y";
-	double last_result = 0.0;
-	int try_again_with_result_exit = 0;
+	private double first = 1.0;
+	private String entered_operation = "+";
+	private double second = 1.0;
+	private String try_again = "y";
+	private String try_again_with_result = "y";
+	private double last_result = 0.0;
+	private int try_again_with_result_exit = 0;
 
-	String tryAgain(){
+	/**
+	 * Check and Validate input for block "try again ?"
+	 * Local vaiable tryagain_exit initializate in method,
+	 * not in block of init variable (see above)
+	 * @return try_again - user choose "y" or "n"
+	 */
+
+	private String tryAgain(){
 		int tryagain_exit = 0;
 
 		do {
@@ -52,7 +59,35 @@ public class Calculate{
 		return try_again;
 	}
 
-	public void runCalculate(String[] arg){
+	/**
+	 * Check and Validate input for block "Save the result in argument[1]"
+	 * @param result_enter 					- first argument
+	 * @return try_again_with_result_return - result.
+	 */
+
+	private double try_again_with_result(double result_enter){
+		double try_again_with_result_return = 0.0;
+
+		do {
+			System.out.println("\n Save the result in argument[1] (y/n) \n");
+			Scanner reader3 = new Scanner(System.in);
+			try_again_with_result = reader3.next();
+
+			if(try_again_with_result.equals("y")){
+				try_again_with_result_return = result_enter;
+				try_again_with_result_exit = 1;
+			}
+			else if(try_again_with_result.equals("n")){
+				try_again_with_result_exit = 1;
+				try_again_with_result_return = 0.0;
+			}
+			else {System.out.println("\n Error enter of try_again_with_result !!! \n");}
+		}while (try_again_with_result_exit == 0);
+
+		return try_again_with_result_return;
+	}
+
+	private void runCalculate(String[] arg) throws Exception{
 		while(try_again.equals("y")){
 
 			/**
@@ -90,27 +125,15 @@ public class Calculate{
 			/**
 			 * Ask user "Save the result in argument[1] ?", and check the input
 			 */
-			do {
-				System.out.println("\n Save the result in argument[1] (y/n) \n");
-				Scanner reader3 = new Scanner(System.in);
-				try_again_with_result = reader3.next();
 
-				if(try_again_with_result.equals("y")){
-					try_again_with_result_exit = 1;
-					last_result = calculator.Result;
-				}
-				else if(try_again_with_result.equals("n")){
-					try_again_with_result_exit = 1;
-					last_result = 0.0;
-				}
-				else {System.out.println("\n Error enter of try_again_with_result !!! \n");}
-			}while (try_again_with_result_exit == 0);
+			last_result = try_again_with_result(calculator.Result);
 		}
 	}
 
 	public static void main(String[] arg) throws Exception {
 
-	//runCalculate(arg);
+	Calculate calculate = new Calculate();
+	calculate.runCalculate(arg);
 	}
 }
 
