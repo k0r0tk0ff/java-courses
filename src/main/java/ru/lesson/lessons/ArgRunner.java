@@ -23,11 +23,14 @@ class ArgRunner {
 	String[] arg;
 
 	ArgRunner(String[] arg) {
+	}
+
+	private void shellForVariables(String[] arg){
+
 		/**
 		 * Scanning entered variables from entered in CLI arguments
 		 * (in CLI, with "java calculate arg[0] arg[1] arg[2]")
 		 */
-
 		try {
 			first = Double.parseDouble(arg[0]);
 			entered_operation = String.valueOf(arg[1]);
@@ -42,7 +45,8 @@ class ArgRunner {
 		}
 	}
 
-	public void main() {
+	public void main(String[] arg) {
+		shellForVariables(arg);
 	}
 }
 
