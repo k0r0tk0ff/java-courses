@@ -44,68 +44,70 @@ class InteractRunner {
 		this.with_result = with_result;
 	}
 
-	void runInteractThreeParameter(){
+    private void runParserForInput(String parameter_count){
+
+        /**
+         * Scanning from console entered variables and parse to "double" and "String" type
+         */
+        switch (parameter_count) {
+            case "three_parameters":
+                Scanner reader = new Scanner(System.in);
+                first = Double.parseDouble(reader.next());
+                entered_operation = reader.next();
+                second = Double.parseDouble(reader.next());
+                break;
+            case "two_parameters":
+                Scanner reader2 = new Scanner(System.in);
+                entered_operation = reader2.next();
+                second = Double.parseDouble(reader2.next());
+                break;
+        }
+    }
+
+    void runInteractThreeParameter(){
 		/**
 		 * IF: Parse entered variables, if input is error do it again (success_input = 0)
 		 */
 		while (success_input == 0){
 
 			/**
-		 	* Scanning from console entered variables
-		 	*/
-
-			Scanner reader = new Scanner(System.in);
-
-			/**
 		 	* Description of programm`s work. Need to understand programm`s work logic
-			 * @throw NumberFormatException error ---- if entered values is wrong
+     		* @throw method runParserForInput() spawn NumberFormatException error if entered values is wrong
 		 	*/
-
 			System.out.println("  This program takes 3 parameters (for CLI and Interact enter): ");
 			System.out.println("  Enter the arguments and operation: \n");
 			System.out.println("  Argument 1; Operation (+, -, x, /, ^); Argument 2; \n");
 
 			try {
-				first = Double.parseDouble(reader.next());
-				entered_operation = reader.next();
-				second = Double.parseDouble(reader.next());
-				success_input = 1;
-			} catch (NumberFormatException error) {
-				System.out.println("\n Error input !!! Try again to input first argument, operation and second argument. \n");
-			}
+                runParserForInput("three_parameters");
+                success_input = 1;
+            } catch (NumberFormatException error) {
+				System.out.println("\n Error input !!! ");
+                System.out.println("Try again to input first argument, operation and second argument. \n");
+            }
 		}
 	}
 
-	void runInteractTwoParameter(){
+    void runInteractTwoParameter(){
 		/**
 		 * IF: Parse entered variables, if input is error do it again (success_input = 0)
 		 */
 		while (success_input == 0){
 
 			/**
-			 * Scanning from console entered variables
-			 */
-
-			Scanner reader = new Scanner(System.in);
-
-			/**
 			 * Description of programm`s work. Need to understand programm`s work logic
 			 */
-
 			System.out.println("  This program takes 2 parameters (Interact enter): ");
 			System.out.println("  Last result = "+with_result+" is argument 1");
 			System.out.println("  Enter the operation and the third argument:");
 			System.out.println("  Operation (+, -, x, /, ^); Argument 2; \n");
 
+            /**
+             * IF: Parse entered variables, if input is error do it again
+             */
 			try {
-
-				/**
-				 * IF: Parse entered variables, if input is error do it again (success_input = 0)
-				 */
-
-				entered_operation = reader.next();
-				second = Double.parseDouble(reader.next());
-				success_input = 1;
+                runParserForInput("two_parameters");
+                success_input = 1;
 			} catch (NumberFormatException error) {
 				System.out.println("\n Error input !!! Try again to input operation and second argument. \n");
 			}
