@@ -10,8 +10,8 @@ import java.util.Scanner;
  *
  * @author_for_template		peterarsentev
  * @author_tester           k0r0tk0ff
- * @date		16/09/2016
- * @version		3.1
+ * @date		18/09/2016
+ * @version		4.0
  *
  * Create class InteractRunner. Add first argument, entered operation, second argument.
  * If use last result, when add entered operation, second argument.
@@ -21,7 +21,7 @@ import java.util.Scanner;
  */
 
 
-public class InteractRunner {
+class InteractRunner {
 
 	/**
 	 * Initialization NOT null variables
@@ -30,21 +30,21 @@ public class InteractRunner {
 	double first = 2.0;
 	String entered_operation = "x";
 	double second = 3.0;
-	int success_input = 0;
-	double with_result;
+	private int success_input = 0;
+	private double with_result;
 
-	public InteractRunner() {
+	InteractRunner() {
 	}
 
 	/**
 	 * Constructor for variant with saved result
 	 */
 
-	public InteractRunner(double with_result) {
+	InteractRunner(double with_result) {
 		this.with_result = with_result;
 	}
 
-	public void runInteractThreeParameter(){
+	void runInteractThreeParameter(){
 		/**
 		 * IF: Parse entered variables, if input is error do it again (success_input = 0)
 		 */
@@ -58,6 +58,7 @@ public class InteractRunner {
 
 			/**
 		 	* Description of programm`s work. Need to understand programm`s work logic
+			 * @throw NumberFormatException error ---- if entered values is wrong
 		 	*/
 
 			System.out.println("  This program takes 3 parameters (for CLI and Interact enter): ");
@@ -75,7 +76,7 @@ public class InteractRunner {
 		}
 	}
 
-	public void runInteractTwoParameter(){
+	void runInteractTwoParameter(){
 		/**
 		 * IF: Parse entered variables, if input is error do it again (success_input = 0)
 		 */
@@ -111,7 +112,7 @@ public class InteractRunner {
 		}
 	}
 
-	public void main(){
+	void main(){
 	}
 }
 

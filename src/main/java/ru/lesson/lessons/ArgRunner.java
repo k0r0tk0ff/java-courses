@@ -8,8 +8,8 @@ package ru.lesson.lessons;
  *
  * @author_for_template		peterarsentev
  * @author_tester           k0r0tk0ff
- * @date		17/09/2016
- * @version		4.0
+ * @date		18/09/2016
+ * @version		4.2
  *
  * Create class ArgRunner. Add the first argument, entered operation, second argument.
  * 
@@ -20,9 +20,10 @@ class ArgRunner {
 	double first = 1.0;
 	String entered_operation = "x";
 	double second = 1.0;
-	String[] arg;
+    private String[] arg;
 
 	ArgRunner(String[] arg) {
+
 		this.arg = arg;
 	}
 
@@ -47,7 +48,6 @@ class ArgRunner {
 	}
 
 	public void main(String[] arg) {
-		//parseForVariables(arg);
 	}
 }
 

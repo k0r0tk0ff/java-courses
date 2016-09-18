@@ -8,8 +8,8 @@ package ru.lesson.lessons;
  *
  * @author_for_template		peterarsentev
  * @author_tester           k0r0tk0ff
- * @date		17/09/2016
- * @version		6.0
+ * @date		18/09/2016
+ * @version		6.2
  *
  * Create class Calculate. Add "+","-","*","/","^" operation.
  * Must be adaptive to type int, short, long, float, double.
@@ -30,12 +30,13 @@ public class Calculate{
 	private double second = 1.0;
 	private String try_again = "y";
 	private String try_again_with_result = "y";
-	private double last_result ;//= 0.0;
+	private double last_result ;
 	private int try_again_with_result_exit = 0;
-	String[] arg;
+	private String[] arg;
 	private int exit_argRunner = 0;
 
 	public Calculate(String[] arg) {
+
 		this.arg = arg;
 	}
 
@@ -101,40 +102,20 @@ public class Calculate{
 			/**
 			 * Check arg from CLI
 			 */
-
 			if (exit_argRunner > 0) {
-
-				ArgRunner arg_runner = new ArgRunner(arg);
-				arg_runner.parseForVariables(arg);
-				first = arg_runner.first;
-				entered_operation = arg_runner.entered_operation;
-				second = arg_runner.second;
-
-				Calculator calculator = new Calculator(first, entered_operation, second);
-
-				/**
-				 * For stop infinity run argrunner
-				 */
-				exit_argRunner = 0;
-
-				try_again = tryAgain();
-				last_result = try_again_with_result(calculator.Result);
-
+				getArgRunner();
 			}
 
+			/**
+			 * Work with args from interact mode
+			 * block {} if(last_result != 0.0)  --- with save result
+			 * block {} else --- without
+			 */
 			if(last_result != 0.0){
-				InteractRunner interact_runner = new InteractRunner(last_result);
-				interact_runner.runInteractTwoParameter();
-				first = last_result;
-				entered_operation = interact_runner.entered_operation;
-				second = interact_runner.second;
+				getInteractRunnerWithResult();
 			}
 			else {
-				InteractRunner interact_runner = new InteractRunner();
-				interact_runner.runInteractThreeParameter();
-				first = interact_runner.first;
-				entered_operation = interact_runner.entered_operation;
-				second = interact_runner.second;
+				getInteractRunner();
 			}
 
 			Calculator calculator = new Calculator(first, entered_operation, second);
@@ -142,16 +123,49 @@ public class Calculate{
 			/**
 			 * Ask user "TRY AGAIN?"
 			 */
-
 			try_again = tryAgain();
 
 			/**
 			 * Ask user "Save the result in argument[1] ?", and check the input
 			 */
-
 			last_result = try_again_with_result(calculator.Result);
 		}
 	}
+
+	private void getInteractRunner(){
+		InteractRunner interact_runner = new InteractRunner();
+		interact_runner.runInteractThreeParameter();
+		first = interact_runner.first;
+		entered_operation = interact_runner.entered_operation;
+		second = interact_runner.second;
+	}
+
+	private void getInteractRunnerWithResult(){
+		InteractRunner interact_runner = new InteractRunner(last_result);
+		interact_runner.runInteractTwoParameter();
+		first = last_result;
+		entered_operation = interact_runner.entered_operation;
+		second = interact_runner.second;
+	}
+
+	private void getArgRunner(){
+		ArgRunner arg_runner = new ArgRunner(arg);
+		arg_runner.parseForVariables(arg);
+		first = arg_runner.first;
+		entered_operation = arg_runner.entered_operation;
+		second = arg_runner.second;
+
+		Calculator calculator = new Calculator(first, entered_operation, second);
+
+		/**
+		 * For stop infinity run argrunner
+		 */
+		exit_argRunner = 0;
+
+		try_again = tryAgain();
+		last_result = try_again_with_result(calculator.Result);
+	}
+
 
 	public static void main(String[] arg) throws Exception {
 

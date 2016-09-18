@@ -1,13 +1,13 @@
 package ru.lesson.lessons;
 
 /**
- * @(#)Calculator.java
+ * @(#)Calculate.java
  *
  * Copyright (c)
  * Free to any use.
  *
- * @author_for_template		peterarsentev
- * @author_tester           k0r0tk0ff
+ * @author		peterarsentev
+ * @author      k0r0tk0ff
  * @date		16/09/2016
  * @version		3.0
  *
@@ -16,9 +16,9 @@ package ru.lesson.lessons;
  * Use SOLID princips.
  */
 
-public class Calculator{
+class Calculator{
     double first;
-    String entered_operation;
+    private String entered_operation;
     double second;
     double Result;
 
@@ -26,23 +26,23 @@ public class Calculator{
      * Write methods for arithmetic operation
      */
 
-    public double add(double first, double second){
+    double add(double first, double second){
         return first + second;
     }
 
-    public double substract(double first, double second){
+    double substract(double first, double second){
         return first - second;
     }
 
-    public double multiple(double first, double second){
+    double multiple(double first, double second){
         return first * second;
     }
 
-    public double div(double first, double second) throws IllegalStateException{
+    double div(double first, double second) throws IllegalStateException{
         return first / second;
     }
 
-    public double expand(double first, double second){
+    double expand(double first, double second){
         double expand_value = 1.0;
         if(second == 0) expand_value = 1.0;
         else if(second == 1) expand_value = first;
@@ -54,7 +54,7 @@ public class Calculator{
         return expand_value;
     }
 
-    public Calculator(double first, String entered_operation, double second){
+    Calculator(double first, String entered_operation, double second){
 
          /**
          * Use variables from input in method`s body
@@ -110,12 +110,10 @@ public class Calculator{
         * Use constructor for tests
         */
 
-    public Calculator(double first, double second){
-
+    Calculator(double first, double second){
         /**
          * Use variables from input in method`s body
          */
-
         this.first = first;
         this.second = second;
     }
