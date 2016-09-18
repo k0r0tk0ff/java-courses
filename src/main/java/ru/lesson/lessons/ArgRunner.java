@@ -23,9 +23,10 @@ class ArgRunner {
 	String[] arg;
 
 	ArgRunner(String[] arg) {
+		this.arg = arg;
 	}
 
-	private void shellForVariables(String[] arg){
+	void parseForVariables(String[] arg){
 
 		/**
 		 * Scanning entered variables from entered in CLI arguments
@@ -46,7 +47,7 @@ class ArgRunner {
 	}
 
 	public void main(String[] arg) {
-		shellForVariables(arg);
+		//parseForVariables(arg);
 	}
 }
 

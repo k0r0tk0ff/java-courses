@@ -34,22 +34,31 @@ public class InteractRunner {
 	double with_result;
 
 	public InteractRunner() {
+	}
 
+	/**
+	 * Constructor for variant with saved result
+	 */
+
+	public InteractRunner(double with_result) {
+		this.with_result = with_result;
+	}
+
+	public void runInteractThreeParameter(){
 		/**
 		 * IF: Parse entered variables, if input is error do it again (success_input = 0)
 		 */
-
 		while (success_input == 0){
 
 			/**
-			 * Scanning from console entered variables
-			 */
+		 	* Scanning from console entered variables
+		 	*/
 
 			Scanner reader = new Scanner(System.in);
 
 			/**
-			 * Description of programm`s work. Need to understand programm`s work logic
-			 */
+		 	* Description of programm`s work. Need to understand programm`s work logic
+		 	*/
 
 			System.out.println("  This program takes 3 parameters (for CLI and Interact enter): ");
 			System.out.println("  Enter the arguments and operation: \n");
@@ -66,17 +75,10 @@ public class InteractRunner {
 		}
 	}
 
-	/**
-	 * Constructor for variant with saved result
-	 */
-
-	public InteractRunner(double with_result) {
-
+	public void runInteractTwoParameter(){
 		/**
 		 * IF: Parse entered variables, if input is error do it again (success_input = 0)
 		 */
-		this.with_result = with_result;
-
 		while (success_input == 0){
 
 			/**
@@ -109,7 +111,7 @@ public class InteractRunner {
 		}
 	}
 
-	public void main(String[] arg){
+	public void main(){
 	}
 }
 

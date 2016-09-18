@@ -30,8 +30,14 @@ public class Calculate{
 	private double second = 1.0;
 	private String try_again = "y";
 	private String try_again_with_result = "y";
-	private double last_result = 0.0;
+	private double last_result ;//= 0.0;
 	private int try_again_with_result_exit = 0;
+	String[] arg;
+	private int exit_argRunner = 0;
+
+	public Calculate(String[] arg) {
+		this.arg = arg;
+	}
 
 	/**
 	 * Check and Validate input for block "try again ?"
@@ -88,27 +94,44 @@ public class Calculate{
 	}
 
 	private void runCalculate(String[] arg) throws Exception{
+
+		exit_argRunner = arg.length;
 		while(try_again.equals("y")){
 
 			/**
 			 * Check arg from CLI
 			 */
 
-			if (arg.length > 0) {
+			if (exit_argRunner > 0) {
+
 				ArgRunner arg_runner = new ArgRunner(arg);
+				arg_runner.parseForVariables(arg);
 				first = arg_runner.first;
 				entered_operation = arg_runner.entered_operation;
 				second = arg_runner.second;
+
+				Calculator calculator = new Calculator(first, entered_operation, second);
+
+				/**
+				 * For stop infinity run argrunner
+				 */
+				exit_argRunner = 0;
+
+				try_again = tryAgain();
+				last_result = try_again_with_result(calculator.Result);
+
 			}
 
 			if(last_result != 0.0){
 				InteractRunner interact_runner = new InteractRunner(last_result);
+				interact_runner.runInteractTwoParameter();
 				first = last_result;
 				entered_operation = interact_runner.entered_operation;
 				second = interact_runner.second;
 			}
 			else {
 				InteractRunner interact_runner = new InteractRunner();
+				interact_runner.runInteractThreeParameter();
 				first = interact_runner.first;
 				entered_operation = interact_runner.entered_operation;
 				second = interact_runner.second;
@@ -132,7 +155,7 @@ public class Calculate{
 
 	public static void main(String[] arg) throws Exception {
 
-	Calculate calculate = new Calculate();
+	Calculate calculate = new Calculate(arg);
 	calculate.runCalculate(arg);
 	}
 }
