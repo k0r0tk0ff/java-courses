@@ -6,8 +6,8 @@ package ru.lesson.lessons;
  * Copyright (c)
  * Free to any use.
  *
- * @author_for_template		peterarsentev
- * @author_tester           k0r0tk0ff
+ * @author    peterarsentev
+ * @author    k0r0tk0ff
  * @date		18/09/2016
  * @version		6.2
  *
