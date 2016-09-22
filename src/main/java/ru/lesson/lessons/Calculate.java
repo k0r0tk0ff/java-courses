@@ -21,6 +21,8 @@ import java.util.Scanner;
 
 public class Calculate{
 
+
+
 	/**
 	 * Initialization NOT null variables
 	 */
@@ -119,7 +121,7 @@ public class Calculate{
 			}
 
 			Calculator calculator = new Calculator(first, entered_operation, second);
-
+			calculator.runCalculator();
 			/**
 			 * Ask user "TRY AGAIN?"
 			 */
@@ -156,6 +158,7 @@ public class Calculate{
 		second = arg_runner.second;
 
 		Calculator calculator = new Calculator(first, entered_operation, second);
+		calculator.runCalculator();
 
 		/**
 		 * For stop infinity run argrunner

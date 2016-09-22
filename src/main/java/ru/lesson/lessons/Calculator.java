@@ -54,16 +54,18 @@ class Calculator{
         return expand_value;
     }
 
-    Calculator(double first, String entered_operation, double second){
+    Calculator(double first, String entered_operation, double second) {
 
-         /**
+        /**
          * Use variables from input in method`s body
          */
 
-         this.first = first;
-         this.entered_operation = entered_operation;
-         this.second = second;
+        this.first = first;
+        this.entered_operation = entered_operation;
+        this.second = second;
+    }
 
+    void runCalculator(){
          /**
          * Switch to arithmetic operation
          */
