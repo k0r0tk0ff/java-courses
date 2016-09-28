@@ -8,8 +8,8 @@ package ru.lesson.lessons;
  *
  * @author		peterarsentev
  * @author      k0r0tk0ff
- * @date		16/09/2016
- * @version		3.0
+ * @since 		28/09/2016
+ * @version		3.1
  *
  * Create class Calculator. Calculate first argument, entered operation, second argument.
  *
@@ -20,7 +20,24 @@ class Calculator{
     double first;
     private String entered_operation;
     double second;
-    double Result;
+    double result;
+
+    Calculator(double first, double second){
+        /**
+         * Use variables from input in method`s body
+         */
+        this.first = first;
+        this.second = second;
+    }
+
+    Calculator(double first, String entered_operation, double second) {
+        /**
+         * Upgrade constructor, use previos version Calculator(double first, double second)
+         * this(first, second); equal this.first = first; this.second = second;
+         */
+        this(first, second);
+        this.entered_operation = entered_operation;
+    }
 
     /**
      * Write methods for arithmetic operation
@@ -54,69 +71,65 @@ class Calculator{
         return expand_value;
     }
 
-    Calculator(double first, String entered_operation, double second) {
-
+    private void printResultOfWorkCalculator() {
         /**
-         * Use variables from input in method`s body
+         *  System.out.println ("\n Argument 1: "+first);
+         *  System.out.println (" Operation: "+entered_operation);
+         *  System.out.println (" Argument 2: "+second);
+         *  System.out.println("\n Result is "+result);
          */
 
-        this.first = first;
-        this.entered_operation = entered_operation;
-        this.second = second;
+        /**
+         * Variant with use method String.format
+         */
+
+        System.out.println(String.format("\n Argument 1: %s", first));
+        System.out.println(String.format(" Operation: %s", entered_operation));
+        System.out.println(String.format(" Argument 2: %s", second));
+        System.out.println(String.format("\n Result is: %s", result));
     }
+
+    /**
+     * Write main method, whose calculate
+     */
 
     void runCalculator(){
          /**
          * Switch to arithmetic operation
          */
 
-         switch (entered_operation){
-         case "+":
-             Result = add(first, second);
-         break;
-         case "-":
-             Result = substract(first, second);
-         break;
-         case "x":
-             Result = multiple(first, second);
-         break;
-         case "^":
-             Result = expand(first, second);
-         break;
-         case "/":
-             try{
-             div(first, second);
-             Result = div(first, second);
-             if (div(first, second) == Double.POSITIVE_INFINITY ||
-                 div(first, second) == Double.NEGATIVE_INFINITY)
-                 throw new IllegalStateException();
-             } catch (IllegalStateException e) {
-                 System.out.println(" div on 0 !!!");
-             }
-         break;
-         default: System.out.println("\n Invalid entered operation");
-         break;
-         }
+        switch (entered_operation){
+        case "+":
+            result = add(first, second);
+        break;
+        case "-":
+            result = substract(first, second);
+        break;
+        case "x":
+            result = multiple(first, second);
+        break;
+        case "^":
+            result = expand(first, second);
+        break;
+        case "/":
+            try{
+            div(first, second);
+            result = div(first, second);
+            if (div(first, second) == Double.POSITIVE_INFINITY ||
+                div(first, second) == Double.NEGATIVE_INFINITY)
+                throw new IllegalStateException();
+            } catch (IllegalStateException e) {
+                System.out.println(" div on 0 !!!");
+            }
+        break;
+        default: System.out.println("\n Invalid entered operation");
+        break;
+        }
 
         /**
          * Checking on monitor the entered arguments
          */
 
-        System.out.println ("\nArgument 1: "+first);
-        System.out.println ("Operation: "+entered_operation);
-        System.out.println ("Argument 2: "+second);
-        System.out.println("\n Result is "+Result);
-    }
-
-        /**
-        * Use constructor for tests
-        */
-
-    Calculator(double first, double second){
-        /**
-         * Use variables from input in method`s body
-         */
-        this.first = first;
-        this.second = second;
+        printResultOfWorkCalculator();
     }
 }

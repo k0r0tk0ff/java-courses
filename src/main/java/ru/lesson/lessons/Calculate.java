@@ -1,4 +1,5 @@
 package ru.lesson.lessons;
+import java.util.Scanner;
 
 /**
  * @(#)Calculate.java
@@ -8,8 +9,8 @@ package ru.lesson.lessons;
  *
  * @author    peterarsentev
  * @author    k0r0tk0ff
- * @date		18/09/2016
- * @version		6.2
+ * @since 		28/09/2016
+ * @version		6.3
  *
  * Create class Calculate. Add "+","-","*","/","^" operation.
  * Must be adaptive to type int, short, long, float, double.
@@ -17,11 +18,7 @@ package ru.lesson.lessons;
  *
  */
 
-import java.util.Scanner;
-
 public class Calculate{
-
-
 
 	/**
 	 * Initialization NOT null variables
@@ -36,6 +33,8 @@ public class Calculate{
 	private int try_again_with_result_exit = 0;
 	private String[] arg;
 	private int exit_argRunner = 0;
+	private int tryagain_exit = 0;
+	private double try_again_with_result_return = 0.0;
 
 	public Calculate(String[] arg) {
 
@@ -50,7 +49,6 @@ public class Calculate{
 	 */
 
 	private String tryAgain(){
-		int tryagain_exit = 0;
 
 		do {
 			System.out.println("\n Try again? (y/n) \n");
@@ -75,7 +73,6 @@ public class Calculate{
 	 */
 
 	private double try_again_with_result(double result_enter){
-		double try_again_with_result_return = 0.0;
 
 		do {
 			System.out.println("\n Save the result in argument[1] (y/n) \n");
@@ -130,7 +127,7 @@ public class Calculate{
 			/**
 			 * Ask user "Save the result in argument[1] ?", and check the input
 			 */
-			last_result = try_again_with_result(calculator.Result);
+			last_result = try_again_with_result(calculator.result);
 		}
 	}
 
@@ -166,7 +163,7 @@ public class Calculate{
 		exit_argRunner = 0;
 
 		try_again = tryAgain();
-		last_result = try_again_with_result(calculator.Result);
+		last_result = try_again_with_result(calculator.result);
 	}
 
 

@@ -1,6 +1,6 @@
 package ru.lesson.lessons;
 
-/*
+/**
  * @(#)ArgRunner.java
  *
  * Copyright (c)
@@ -8,8 +8,8 @@ package ru.lesson.lessons;
  *
  * @author		peterarsentev
  * @author      k0r0tk0ff
- * @date		18/09/2016
- * @version		4.2
+ * @since 		28/09/2016
+ * @version		4.3
  *
  * Create class ArgRunner. Add the first argument, entered operation, second argument.
  * 

@@ -10,8 +10,8 @@ import java.util.Scanner;
  *
  * @author    peterarsentev
  * @author    k0r0tk0ff
- * @date		18/09/2016
- * @version		4.0
+ * @since 		28/09/2016
+ * @version		4.1
  *
  * Create class InteractRunner. Add first argument, entered operation, second argument.
  * If use last result, when add entered operation, second argument.
@@ -98,7 +98,8 @@ class InteractRunner {
 			 * Description of programm`s work. Need to understand programm`s work logic
 			 */
 			System.out.println("  This program takes 2 parameters (Interact enter): ");
-			System.out.println("  Last result = "+with_result+" is argument 1");
+			//System.out.println("  Last result = "+with_result+" is argument 1");
+			System.out.println(String.format("  Last result = %1s is argument 1 ", with_result));
 			System.out.println("  Enter the operation and the third argument:");
 			System.out.println("  Operation (+, -, x, /, ^); Argument 2; \n");
 
@@ -112,9 +113,6 @@ class InteractRunner {
 				System.out.println("\n Error input !!! Try again to input operation and second argument. \n");
 			}
 		}
-	}
-
-	void main(){
 	}
 }
 
